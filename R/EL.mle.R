@@ -10,8 +10,9 @@ EL.mle <- function(dat, max.iter = 1){
       stop('ucminf fails')
     }
 
+    suppressWarnings(
     sol <- ucminf(par, nloglik, gr = nderiv,
-                  control = list(maxeval = 5000), dat = dat)
+                  control = list(maxeval = 5000), dat = dat))
 
     if(sol$convergence %in% c(1,2,4) && -sol$value > fn0 && sol$info['maxgradient'] < 1e-5){
       J <- -deriv2(sol$par, dat)/dat$n

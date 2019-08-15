@@ -27,6 +27,7 @@ init <- function(oformula, odata,
   edata <- pe$edata
 
   od <- odata[, var.d]
+  names(od) <- rownames(odata)
   if(!is.null(var.ox)){
     ox <- as.matrix(odata[, var.ox, drop = FALSE])
   }else{
@@ -35,19 +36,21 @@ init <- function(oformula, odata,
   og <- as.matrix(odata[, var.g, drop = FALSE])
 
   ed <- edata[, var.d]
+  names(ed) <- rownames(edata)
 
   # scale the exposure for numerical stability
   if(scale){
     # message('mra standarizes the exposure to have zero mean and unit variance for numerical stability')
     mu <- mean(edata[, var.z])
     sigma <- sd(edata[, var.z])
-    edata[, var.z] <- scale(edata[, var.z])
+    edata[, var.z] <- (edata[, var.z] - mu)/sigma
   }else{
     mu <- 0
     sigma <- 1
   }
 
   z <- edata[, var.z]
+  names(z) <- rownames(edata)
   if(!is.null(var.ex)){
     ex <- as.matrix(edata[, var.ex, drop = FALSE])
   }else{

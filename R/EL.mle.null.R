@@ -11,9 +11,10 @@ EL.mle.null <- function(dat, bet.null){
 
   fn0 <- -nloglik.null(par.null, dat, bet.null)
 
+  suppressWarnings(
   sol <- ucminf(par.null, nloglik.null, gr = nderiv.null,
                 control = list(maxeval = 5000),
-                dat = dat, bet.null = bet.null)
+                dat = dat, bet.null = bet.null))
 
   par <- c(bet = bet.null, sol$par)
   J <- -deriv2(par, dat)[-map$bet, -map$bet]/dat$n

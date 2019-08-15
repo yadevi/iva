@@ -1,5 +1,9 @@
 
-reorganize <- function(dat, wald, lm, ct, tsr){
+# prepare final return object
+# convert parameters to their form in underlying risk models, not in working models
+# maily for coefficients of covariates shared in both models
+# rescale (mean and sd) parameters because exposure z was rescaled before estimating the parameters
+reorganize <- function(dat, wald, lm, ct, pt, tsr){
 
   var <- dat$var
   map <- dat$map
@@ -63,6 +67,6 @@ reorganize <- function(dat, wald, lm, ct, tsr){
   fit <- list(sigma2 = sigma2,
               residuals = residuals, fitted.values = fitted.values,
               coefficients = par, vcov = vcov,
-              wald = wald, lm = lm, ct = ct, tsr = tsr)
+              wald = wald, lm = lm, ct = ct, pleio.p = pt, tsr = tsr)
 
 }

@@ -13,10 +13,15 @@ mra.default <- function(oformula, odata, eformula, edata){
 
   ct <- c.test(dat, wald$par, wald$vcov)
 
-  fit <- reorganize(dat, wald, lm, ct, tsr)
+  #pt1 <- pleio.test1(dat, wald$par)
+  pt <- pleio.test(dat, wald$par, wald$vcov)
+  
+  return(pt)
+  
+  fit <- reorganize(dat, wald, lm, ct, pt, tsr)
   fit$call <- match.call()
   class(fit) <- 'mra'
-
+  
   fit
 
 }

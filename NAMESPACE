@@ -1,7 +1,7 @@
 #exportPattern("^[[:alpha:]]+")
 importFrom(ucminf, ucminf)
 importFrom(graphics, abline, plot)
-importFrom(stats, sd, coef, glm, lm, pchisq, printCoefmat, qchisq, runif, uniroot)
+importFrom(stats, cov, sd, coef, glm, lm, pchisq, printCoefmat, qchisq, runif, uniroot)
 importFrom(stats, lowess, model.frame, model.matrix, na.pass)
 importFrom(graphics, lines)
 importFrom(Formula, Formula, model.part)

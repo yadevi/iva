@@ -8,7 +8,9 @@ Lemma5 <- function(par, dat){
 
   Jn <- Lemma4(par, dat)
   Jna <- Jn[, map$a, drop = FALSE]
+  Hn <- compute.H(par, dat)
   In <- Jn - (n0 + n1)/n0/n1 * Jna %*% t(Jna)
+  # In <- In + Hn
 
   In
 

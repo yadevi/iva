@@ -2,8 +2,9 @@
 
 gmm <- function(dat){
 
+  suppressWarnings(
   sol <- ucminf(dat$par.e, LS.obj, gr = LS.deriv,
-                control = list(maxeval = 5000), dat = dat)
+                control = list(maxeval = 5000), dat = dat))
 
   par.e <- sol$par
 

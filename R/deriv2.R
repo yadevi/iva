@@ -3,6 +3,8 @@ deriv2 <- function(par, dat){
 
   np <- length(par)
   ret <- matrix(0, np, np)
+  rownames(ret) <- names(par)
+  colnames(ret) <- names(par)
 
   #########################
   map <- dat$map
